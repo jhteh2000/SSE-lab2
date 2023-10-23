@@ -37,3 +37,15 @@ def rockpaperscissors():
         bot_input=bot_input,
         result=output
     )
+
+
+def process_query(q):
+    if q == "dinosaurs":
+        return "Dinosaurs ruled the Earth 200 million years ago"
+    return "Unknown"
+
+
+@app.route("/query", methods=["GET"])
+def query():
+    q = request.args.get('q')
+    return process_query(q)
