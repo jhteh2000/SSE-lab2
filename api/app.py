@@ -32,8 +32,5 @@ def rockpaperscissors():
         output = "You Lose!"
 
     return render_template(
-        "rockpaperscissors.html",
-        input=input,
-        bot_input=bot_input,
-        result=output
+        "rockpaperscissors.html", input=input, bot_input=bot_input, result=output
     )
