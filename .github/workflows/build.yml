@@ -18,7 +18,14 @@ jobs:
         run: pip install -r requirements.txt
       - name: Run pytest
         run: pytest api/*.py
-
+      - name: Install Pytest GitHub Report
+        run: pip install pytest-github-report
+      - name: Generate Pytest Report
+        env:
+	  pytest_github_report: true
+	  pytest_report_title: "Pytest Report"
+	  pytest_verbosity: 2
+        run: pytest api/*.py
 
   deploy-to-vercel:
     needs: python-formatting
