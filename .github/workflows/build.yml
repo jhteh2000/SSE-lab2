@@ -23,7 +23,6 @@ jobs:
       - name: Generate Pytest Report
         env:
           pytest_github_report: true
-          pytest_report_title: "Pytest Report"
           pytest_verbosity: 2
         run: pytest api/*.py
 
