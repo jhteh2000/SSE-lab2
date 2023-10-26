@@ -10,10 +10,13 @@
 
 <body>
     <h1>Rock Paper Scissors Game</h1>
+    
     <form action="/rockpaperscissors" method="post">
-        <label for="rock"><img src="../rock.png" alt="Rock" width="200" height="200"></label>
-        <input type="image" id="rock" alt="ROCK" name="input" value="rock" 
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKQLogI6N-WNA11BQYemy5ayImKPpRrguPp6I27VMl4qEtytfYHF3DqD094WBKzNbpJ5w&usqp=CAU" />
+        <label for="rock">Rock</label>
+        
+        <input type="hidden" name="input" id="input" value="" />
+        <input type="image" id="rock_image" alt="ROCK" 
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKQLogI6N-WNA11BQYemy5ayImKPpRrguPp6I27VMl4qEtytfYHF3DqD094WBKzNbpJ5w&usqp=CAU" onclick="setInputValue("rock")" />
         
         <label for="paper">Paper</label>
         <input type="radio" id="paper" name="input" value="paper">
@@ -23,6 +26,18 @@
         <br>
         <button type="submit">   Submit  </button>
     </form>
+
+    
+    
+</form>
+
+<script>
+    function setInputValue(value) {
+        document.getElementById('in_put').value = value;
+    }
+</script>
+
+    
     <p>Your last choice: {{ input }}</p>
     <p>NPC last choice: {{ bot_input }}</p>
     <p>{{ result }}</p>
