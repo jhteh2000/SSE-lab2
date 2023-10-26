@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <center>
     <h1>Rock Paper Scissors Game</h1>
 
     <form action="/rockpaperscissors" method="post">
@@ -25,13 +26,6 @@
         </button>
     </form>
 
-    <script>
-    function setValueAndSubmit(value) {
-        document.getElementById('input').value = value;
-        document.getElementById('gameForm').submit();
-    }
-    </script>
-
     <!-- original method
     
     <form action="/rockpaperscissors" method="post">
@@ -47,19 +41,11 @@
     
     -->
     
-    
-</form>
-
-<script>
-    function setInputValue(value) {
-        document.getElementById('in_put').value = value;
-    }
-</script>
-
-    
     <p>Your last choice: {{ input }}</p>
     <p>NPC last choice: {{ bot_input }}</p>
     <p>{{ result }}</p>
+    </center>
+    
     <a href="/">Back to home</a>
 </body>
 
