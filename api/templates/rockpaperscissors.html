@@ -10,23 +10,39 @@
 
 <body>
     <h1>Rock Paper Scissors Game</h1>
+
+    <form action="/rockpaperscissors" method="post" id="gameForm">
+        <input type="hidden" name="input" id="input" value="">
+    </form>
+
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKQLogI6N-WNA11BQYemy5ayImKPpRrguPp6I27VMl4qEtytfYHF3DqD094WBKzNbpJ5w&usqp=CAU" 
+        alt="Rock" onclick="setValueAndSubmit("rock")">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUy4d-pmFGXpE5CWLImhNy66dUNnovlWL66AHYKhyHUmPyl-45MbAlOqNnRF3m-BEIjkQ&usqp=CAU" 
+        alt="Scissor" onclick="setValueAndSubmit("scissor")">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJmmKD1kXcKkp6DglJ9XfmWKklh3tLApTGrBAYsy6HyZN-z1jc_gXpIEwKTaXvcSA97HQ&usqp=CAU" 
+        alt="Paper" onclick="setValueAndSubmit("paper")">
+
+    <script>
+    function setValueAndSubmit(value) {
+        document.getElementById('input').value = value;
+        document.getElementById('gameForm').submit();
+    }
+    </script>
+
+    <!-- original method
     
     <form action="/rockpaperscissors" method="post">
         <label for="rock">Rock</label>
-        
-        <input type="hidden" name="input" id="input" value="" />
-        <input type="image" id="rock_image" alt="ROCK" 
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKQLogI6N-WNA11BQYemy5ayImKPpRrguPp6I27VMl4qEtytfYHF3DqD094WBKzNbpJ5w&usqp=CAU" onclick="setInputValue("rock")" />
-        
+        <input type="radio" id="rock" name="input" value="rock">
         <label for="paper">Paper</label>
         <input type="radio" id="paper" name="input" value="paper">
-        
         <label for="scissors">Scissors</label>
         <input type="radio" id="scissors" name="input" value="scissors">
         <br>
         <button type="submit">   Submit  </button>
     </form>
-
+    
+    -->
     
     
 </form>
