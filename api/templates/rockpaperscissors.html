@@ -12,13 +12,16 @@
     <h1>Rock Paper Scissors Game</h1>
     <form action="/rockpaperscissors" method="post">
         <label for="rock"><img src="../rock.png" alt="Rock" width="200" height="200"></label>
-        <input type="radio" id="rock" name="input" value="rock">
+        <input type="image" id="rock" alt="ROCK" name="input" value="rock" 
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKQLogI6N-WNA11BQYemy5ayImKPpRrguPp6I27VMl4qEtytfYHF3DqD094WBKzNbpJ5w&usqp=CAU" />
+        
         <label for="paper">Paper</label>
         <input type="radio" id="paper" name="input" value="paper">
+        
         <label for="scissors">Scissors</label>
         <input type="radio" id="scissors" name="input" value="scissors">
         <br>
-        <button type="submit">Submit</button>
+        <button type="submit">   Submit  </button>
     </form>
     <p>Your last choice: {{ input }}</p>
     <p>NPC last choice: {{ bot_input }}</p>
