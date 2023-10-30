@@ -84,8 +84,6 @@ def process_query(q):
                 num_cube_sqr.append(number[i])
         result = num_cube_sqr
         return result
-
-
     return "Unknown"
 
 
