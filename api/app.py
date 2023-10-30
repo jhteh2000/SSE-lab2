@@ -67,7 +67,7 @@ def process_query(q):
         return (str(int(number[0]) * int(number[1])))
     elif "largest" in q:
         number = []
-        q = q.strip("?")
+        q = q.strip("?").split(": ")[1]
         for word in q.split(", "):
             if word.isdigit():
                 number.append(word)
@@ -75,7 +75,7 @@ def process_query(q):
     elif "cube" in q:
         number = []
         num_cube_sqr = []
-        q = q.strip("?")
+        q = q.strip("?").split(": ")[1]
         for word in q.split(", "):
             if word.isdigit():
                 number.append(word)
@@ -87,7 +87,7 @@ def process_query(q):
     elif "primes" in q:
         number = []
         num_prime = []
-        q = q.strip("?")
+        q = q.strip("?").split(": ")[1]
         for word in q.split(", "):
             if word.isdigit():
                 number.append(word)

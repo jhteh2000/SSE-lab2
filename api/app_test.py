@@ -24,7 +24,7 @@ def test_knows_about_multiplication():
 
 def test_knows_about_largest():
     assert process_query("Which of the following numbers\
-                          is the largest: 68, 78, 40?") == "78"
+                          is the largest: 78, 68, 40?") == "78"
 
 
 def test_knows_about_cube_and_sqr():
