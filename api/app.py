@@ -100,13 +100,13 @@ def process_query(q):
                 flags_prime = True
             elif int(number[i]) % 2 == 0:
                 flags_prime = False
-        
+
             # Check for divisibility up to the square root of n
             for j in range(3, int(int(number[i])**0.5) + 1, 2):
                 if int(number[i]) % j == 0:
                     flags_prime = False
-            
-            if (flags_prime == True):
+
+            if (flags_prime is True):
                 num_prime.append(number[i])
 
         result = ", ".join(num_prime)
