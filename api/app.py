@@ -84,7 +84,7 @@ def process_query(q):
                 num_cube_sqr.append(number[i])
         result = ", ".join(num_cube_sqr)
         return result
-    elif "prime" in q:
+    elif "primes" in q:
         number = []
         num_prime = []
         q = q.strip("?")
