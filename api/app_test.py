@@ -33,5 +33,10 @@ def test_knows_about_cube_and_sqr():
                             "729, 64, 1"
 
 
+def test_knows_about_prime():
+    assert process_query("Which of the following numbers are primes: \
+                         66, 35, 74, 42, 43, 7?") == "43, 7"
+
+
 def test_does_not_know_about_asteroids():
     assert process_query("asteroids") == "Unknown"

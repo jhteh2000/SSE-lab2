@@ -84,6 +84,33 @@ def process_query(q):
                 num_cube_sqr.append(number[i])
         result = ", ".join(num_cube_sqr)
         return result
+    elif "prime" in q:
+        number = []
+        num_prime = []
+        q = q.strip("?")
+        for word in q.split(", "):
+            if word.isdigit():
+                number.append(word)
+
+        for i in range(len(number)):
+            flags_prime = True
+            if int(number[i]) <= 1:
+                flags_prime = False
+            elif int(number[i]) == 2:
+                flags_prime = True
+            elif int(number[i]) % 2 == 0:
+                flags_prime = False
+        
+            # Check for divisibility up to the square root of n
+            for j in range(3, int(int(number[i])**0.5) + 1, 2):
+                if int(number[i]) % j == 0:
+                    flags_prime = False
+            
+            if (flags_prime == True):
+                num_prime.append(number[i])
+
+        result = ", ".join(num_prime)
+        return result
     return "Unknown"
 
 
