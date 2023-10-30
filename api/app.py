@@ -45,11 +45,19 @@ def process_query(q):
     elif "name" in q:
         return "Team_team"
     elif "plus" in q:
-        txt = q.strip('?').split(' ')
-        return (str(int(txt[2]) + int(txt[4])))
+        number = []
+        q = q.strip("?")
+        for word in q.split():
+            if word.isdigit():
+                number.append(word)
+        return (str(int(number[0]) + int(number[1])))
     elif "multiplied" in q:
-        txt = q.strip('?').split(' ')
-        return (str(int(txt[2]) * int(txt[-1])))
+        number = []
+        q = q.strip("?")
+        for word in q.split():
+            if word.isdigit():
+                number.append(word)
+        return (str(int(number[0]) * int(number[1])))
     return "Unknown"
 
 

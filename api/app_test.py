@@ -9,6 +9,11 @@ million years ago"
 def test_knows_about_team_name():
     assert process_query("What is your name?") == "Team_team"
 
+def test_knows_about_plus():
+    assert process_query("What is 6 plus 9?") == "15"
+
+def test_knows_about_multiplication():
+    assert process_query("What is 27 multiplied by 34?") == "918"
 
 def test_knows_plus():
     assert process_query("What is 6 plus 9?") == '15'
