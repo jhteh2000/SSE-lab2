@@ -47,6 +47,9 @@ def process_query(q):
     elif "plus" in q:
         txt = q.strip('?').split(' ')
         return (str(int(txt[2]) + int(txt[4])))
+    elif "multiplied" in q:
+        txt = q.strip('?').split(' ')
+        return (str(int(txt[2]) * int(txt[-1])))
     return "Unknown"
 
 
