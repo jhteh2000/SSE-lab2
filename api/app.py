@@ -58,6 +58,13 @@ def process_query(q):
             if word.isdigit():
                 number.append(word)
         return (str(int(number[0]) * int(number[1])))
+    elif "largest" in q:
+        number = []
+        q = q.strip("?")
+        for word in q.split(", "):
+            if word.isdigit():
+                number.append(word)
+        return (max(number))
     return "Unknown"
 
 
