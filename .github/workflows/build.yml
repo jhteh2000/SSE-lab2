@@ -15,10 +15,10 @@ jobs:
       - name: Run flake8
         run: flake8 api/
 
-
   unit-test:
     needs: python-formatting
     runs-on: ubuntu-latest
+    steps:
       - name: Install dependencies in requirements.txt 
         run: pip install -r requirements.txt
       - name: Run pytest
