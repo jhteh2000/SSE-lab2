@@ -42,7 +42,7 @@ def rockpaperscissors():
 def process_query(q):
     if "dinosaurs" in q:
         return "Dinosaurs ruled the Earth 200 million years ago"
-    elif "What is your name?" in q:
+    elif "name" in q:
         return "Team_team"
     return "Unknown"
 
