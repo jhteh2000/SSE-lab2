@@ -46,7 +46,7 @@ def process_query(q):
         return "Team_team"
     elif "plus" in q:
         txt = q.strip('?').split(' ')
-        return (int(txt[2]) + int(txt[4]))
+        return (str(int(txt[2]) + int(txt[4])))
     return "Unknown"
 
 
