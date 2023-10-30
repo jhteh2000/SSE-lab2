@@ -44,6 +44,9 @@ def process_query(q):
         return "Dinosaurs ruled the Earth 200 million years ago"
     elif "name" in q:
         return "Team_team"
+    elif "plus" in q:
+        txt = q.strip('?').split(' ')
+        return(int(txt[2]) + int(txt[4]))
     return "Unknown"
 
 
