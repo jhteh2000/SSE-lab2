@@ -57,7 +57,7 @@ def process_query(q):
         for word in q.split():
             if word.isdigit():
                 number.append(word)
-        return (int(number[0]) * int(number[1]))
+        return (str(int(number[0]) * int(number[1])))
     return "Unknown"
 
 
