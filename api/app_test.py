@@ -14,6 +14,10 @@ def test_knows_about_plus():
     assert process_query("What is 6 plus 9?") == "15"
 
 
+def test_knows_about_minus():
+    assert process_query("What is 9 minus 4?") == "5"
+
+
 def test_knows_about_multiplication():
     assert process_query("What is 27 multiplied by 34?") == "918"
 
