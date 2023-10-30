@@ -27,5 +27,10 @@ def test_knows_about_largest():
                           is the largest: 68, 78, 40?") == "78"
 
 
+def test_knows_about_cube_and_sqr():
+    assert process_query("Which of the following numbers is both a square and\
+                          a cube: 2304, 1324, 4702, 729, 64, 8, 1?") == ['729', '64', '1']
+
+
 def test_does_not_know_about_asteroids():
     assert process_query("asteroids") == "Unknown"

@@ -72,6 +72,20 @@ def process_query(q):
             if word.isdigit():
                 number.append(word)
         return (max(number))
+    elif "cube" in q:
+        number = []
+        num_cube_sqr = []
+        q = q.strip("?")
+        for word in q.split(", "):
+            if word.isdigit():
+                number.append(word)
+        for i in range(len(number)):
+            if (round(int(number[i]) ** (1/6)) ** 6 == int(number[i])):
+                num_cube_sqr.append(number[i])
+        result = num_cube_sqr
+        return result
+
+
     return "Unknown"
 
 
