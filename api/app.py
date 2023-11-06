@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 import random
-import githubapi as gh
+from githubapi import GitHubUser
 
 app = Flask(__name__)
 
@@ -33,10 +33,7 @@ def rockpaperscissors():
         output = "You Lose!"
 
     return render_template(
-        "rockpaperscissors.html",
-        input=input,
-        bot_input=bot_input,
-        result=output
+        "rockpaperscissors.html", input=input, bot_input=bot_input, result=output
     )
 
 
@@ -129,8 +126,6 @@ def github_form():
 @app.route("/github_api", methods=["POST"])
 def get_username():
     input_username = request.form.get("username")
-    repo_list = gh.getRepoLists()
-    return render_template("greet.html",
-                           username=input_username,
-                           repos=repo_list
-                           )
+    user = GitHubUser(input_username)
+    repo_list = user.getRepoLists()
+    return render_template("greet.html", username=input_username, repos=repo_list)
