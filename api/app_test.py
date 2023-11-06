@@ -2,8 +2,11 @@ from app import process_query
 
 
 def test_knows_about_dinosaurs():
-    assert process_query("dinosaurs") == "Dinosaurs ruled the Earth 200 \
+    assert (
+        process_query("dinosaurs")
+        == "Dinosaurs ruled the Earth 200 \
 million years ago"
+    )
 
 
 def test_knows_about_team_name():
@@ -23,19 +26,33 @@ def test_knows_about_multiplication():
 
 
 def test_knows_about_largest():
-    assert process_query("Which of the following numbers\
-                          is the largest: 78, 68, 40?") == "78"
+    assert (
+        process_query(
+            "Which of the following numbers\
+                          is the largest: 78, 68, 40?"
+        )
+        == "78"
+    )
 
 
 def test_knows_about_cube_and_sqr():
-    assert process_query("Which of the following numbers is both a square and\
-                          a cube: 2304, 1324, 4702, 729, 64, 8, 1?") == \
-                            "729, 64, 1"
+    assert (
+        process_query(
+            "Which of the following numbers is both a square and a \
+                         cube: 729, 4898, 2081, 4096, 1985, 3139, 1156?"
+        )
+        == "729, 4096"
+    )
 
 
 def test_knows_about_prime():
-    assert process_query("Which of the following numbers are primes: \
-                         66, 35, 74, 42, 43, 7?") == "43, 7"
+    assert (
+        process_query(
+            "Which of the following numbers are primes: \
+                         66, 35, 74, 42, 43, 7?"
+        )
+        == "43, 7"
+    )
 
 
 def test_does_not_know_about_asteroids():

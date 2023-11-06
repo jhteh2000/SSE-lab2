@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import random
+import githubapi as gh
 
 app = Flask(__name__)
 
@@ -50,28 +51,28 @@ def process_query(q):
         for word in q.split():
             if word.isdigit():
                 number.append(word)
-        return (str(int(number[0]) + int(number[1])))
+        return str(int(number[0]) + int(number[1]))
     elif "minus" in q:
         number = []
         q = q.strip("?")
         for word in q.split():
             if word.isdigit():
                 number.append(word)
-        return (str(int(number[0]) - int(number[1])))
+        return str(int(number[0]) - int(number[1]))
     elif "multiplied" in q:
         number = []
         q = q.strip("?")
         for word in q.split():
             if word.isdigit():
                 number.append(word)
-        return (str(int(number[0]) * int(number[1])))
+        return str(int(number[0]) * int(number[1]))
     elif "largest" in q:
         number = []
         q = q.strip("?").split(": ")[1]
         for word in q.split(", "):
             if word.isdigit():
                 number.append(word)
-        return (max(number))
+        return max(number)
     elif "cube" in q:
         number = []
         num_cube_sqr = []
@@ -80,7 +81,7 @@ def process_query(q):
             if word.isdigit():
                 number.append(word)
         for i in range(len(number)):
-            if (round(int(number[i]) ** (1/6)) ** 6 == int(number[i])):
+            if round(int(number[i]) ** (1 / 6)) ** 6 == int(number[i]):
                 num_cube_sqr.append(number[i])
         result = ", ".join(num_cube_sqr)
         return result
@@ -102,11 +103,11 @@ def process_query(q):
                 flags_prime = False
 
             # Check for divisibility up to the square root of n
-            for j in range(3, int(int(number[i])**0.5) + 1, 2):
+            for j in range(3, int(int(number[i]) ** 0.5) + 1, 2):
                 if int(number[i]) % j == 0:
                     flags_prime = False
 
-            if (flags_prime is True):
+            if flags_prime is True:
                 num_prime.append(number[i])
 
         result = ", ".join(num_prime)
@@ -116,5 +117,20 @@ def process_query(q):
 
 @app.route("/query", methods=["GET"])
 def query():
-    q = request.args.get('q')
+    q = request.args.get("q")
     return process_query(q)
+
+
+@app.route("/githubform")
+def github_form():
+    return render_template("githubform.html")
+
+
+@app.route("/github_api", methods=["POST"])
+def get_username():
+    input_username = request.form.get("username")
+    repo_list = gh.getRepoLists()
+    return render_template("greet.html",
+                           username=input_username,
+                           repos=repo_list
+                           )
