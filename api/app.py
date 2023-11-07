@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 import random
-from functions.githubapi import GitHubUser, GitHubRepo
+from functions.githubapi import GitHubUser
 
 """
 class GitHubUser:
