@@ -7,8 +7,7 @@
     ],
     "functions": {
         "api/app": {
-            "includeFiles": "api/functions/**",
-            "runtime": "python3.9"
+            "includeFiles": "api/functions/**"
         }
     }
 }
