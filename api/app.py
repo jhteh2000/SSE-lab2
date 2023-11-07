@@ -128,4 +128,4 @@ def get_username():
     input_username = request.form.get("username")
     user = GitHubUser(input_username)
     repo_list = user.getRepoLists()
-    return render_template("greet.html", username=input_username, repos=repo_list)
+    return render_template("greet.html", username=input_username, repos_info=repo_list)

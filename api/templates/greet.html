@@ -7,9 +7,24 @@
 </head>
 <body>
     <h1>Hello {{username}}</h1>
-    <h2>Repo list:</h2>
-    {% for name, date in repos %}
-        <p>{{ name }} {{ date }}</p>
-    {% endfor %}
+
+    <h2>Repo table:</h2>
+    <div style="overflow-x:auto;">
+      <table border="1">
+        <tr>
+          <th style="padding: 8px;">Repo Name</th>
+          <th style="padding: 8px;">Created At</th>
+          <th style="padding: 8px;">Pushed At</th>
+          <th style="padding: 8px;">Home Page</th>
+        </tr>
+        {% for row in repos_info %}
+          <tr>
+            {% for col in row %}
+              <td style="padding: 8px;">{{ col }}</td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
 </body>
 </html>
