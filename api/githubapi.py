@@ -15,7 +15,7 @@ class GitHubUser:
             repo_name = []
             for repo in repos:
                 repo_name.append(repo["full_name"])
-            return repo_name
+                return repo_name
 
     def getRepoLastPushed(self):
         if self.response.status_code == 200:
@@ -24,7 +24,7 @@ class GitHubUser:
             repo_last_updated = []
             for repo in repos:
                 repo_last_updated.append(repo["pushed_at"])
-            return repo_last_updated
+                return repo_last_updated
 
     def getRepoLists(self):
         if self.response.status_code == 200:
