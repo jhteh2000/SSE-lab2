@@ -6,7 +6,7 @@
         }
     ],
     "functions": {
-        "api/app": {
+        "api/app.py": {
             "includeFiles": "api/functions/**"
         }
     }
