@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import random
 import requests
 
+
 class GitHubUser:
     def __init__(self, username):
         self.username = username
