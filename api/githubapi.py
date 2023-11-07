@@ -37,7 +37,3 @@ class GitHubUser:
             for row in list_results:
                 print(row)
         return list_results
-
-
-getRepoLists()
->>>>>>> 0a873ae (table added)
