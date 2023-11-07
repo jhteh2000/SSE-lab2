@@ -3,7 +3,7 @@
         "/api/app": {
             "includeFiles": "api/githubapi.py"
         }
-    }
+    },
     "rewrites": [
         {
             "source": "/(.*)",
