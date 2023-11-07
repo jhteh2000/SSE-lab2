@@ -1,13 +1,14 @@
 {
-    "functions": {
-        "api/app.py": {
-            "includeFiles": "api/githubapi.py"
-        }
-    },
     "rewrites": [
         {
             "source": "/(.*)",
             "destination": "/api/app"
         }
-    ]
+    ],
+    "functions": {
+        "api/app": {
+            "includeFiles": "api/functions/**",
+            "runtime": "@vercel/python"
+        }
+    }
 }
