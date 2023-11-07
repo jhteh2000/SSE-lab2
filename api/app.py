@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 import random
-
+import requests
 
 class GitHubUser:
     def __init__(self, username):
@@ -39,7 +39,6 @@ class GitHubUser:
             for row in list_results:
                 print(row)
         return list_results
-
 
 
 app = Flask(__name__)
