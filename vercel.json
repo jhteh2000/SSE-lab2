@@ -1,13 +1,8 @@
 {
-    "functions": {
-        "api/app": {
-            "includeFiles": ["/api/githubapi.py"]
-        }
-    },
     "rewrites": [
         {
             "source": "/(.*)",
-            "destination": "/api/app"
+            "destination": "/api/app.py"
         }
     ]
 }
