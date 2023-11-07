@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request
 import random
-from functions.githubapi import GitHubUser
+# from functions.githubapi import GitHubUser
 
-"""
+
 class GitHubUser:
     def __init__(self, username):
         self.username = username
@@ -44,7 +44,7 @@ class GitHubUser:
             for row in list_results:
                 print(row)
         return list_results
-"""
+
 
 app = Flask(__name__)
 
