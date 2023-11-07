@@ -26,13 +26,37 @@ class GitHubUser:
                 repo_last_updated.append(repo["pushed_at"])
                 return repo_last_updated
 
-    # def getRepoLists(self):
-    #     if self.response.status_code == 200:
-    #         list_name = self.getRepoName()
-    #         list_pushes = self.getRepoLastPushed()
-    #         repo_list = zip(list_name, list_pushes)
-    #         return repo_list
+    def getRepoCreatedDate(self):
+        if self.response.status_code == 200:
+            repos = self.response.json()
+            # data returned is a list of ‘repository’ entities
+            repo_created_date = []
+            for repo in repos:
+                repo_created_date.append(repo["created_at"])
+                return repo_created_date
 
+    def getRepoHomepage(self):
+        if self.response.status_code == 200:
+            repos = self.response.json()
+            # data returned is a list of ‘repository’ entities
+            repo_homepage = []
+            for repo in repos:
+                repo_homepage.append(repo["homepage"])
+                return repo_homepage
+
+    def getRepoLists(self):
+        if self.response.status_code == 200:
+            list_name = self.getRepoName()
+            list_pushes = self.getRepoLastPushed()
+            list_created = self.getRepoCreatedDate()
+            list_homepage = self.getRepoHomepage()
+            repo_list = zip(
+                list_name, list_pushes, list_created, list_homepage
+            )
+            return repo_list
+
+
+"""
     def getRepoLists(self):
         if self.response.status_code == 200:
             # store data as a list of ‘repository’ entities
@@ -67,6 +91,7 @@ class GitHubUser:
             for row in list_results:
                 print(row)
         return list_results
+"""
 
 
 class GitHubRepo:
@@ -93,6 +118,22 @@ class GitHubRepo:
             for commit in commits:
                 commit_author.append(commit["commit"]["author"]["name"])
             return commit_author
+
+    def getCommitDate(self):
+        if self.response.status_code == 200:
+            commits = self.response.json()
+            commit_date = []
+            for commit in commits:
+                commit_date.append(commit["commit"]["author"]["date"])
+            return commit_date
+
+    def getCommitMessage(self):
+        if self.response.status_code == 200:
+            commits = self.response.json()
+            commit_message = []
+            for commit in commits:
+                commit_message.append(commit["commit"]["message"])
+            return commit_message
 
     # NOT DONE
     def getRepoCommitsLists(self):
