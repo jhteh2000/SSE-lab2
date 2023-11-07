@@ -2,6 +2,8 @@ from flask import Flask, render_template, request
 import random
 import requests
 
+# from githubapi import GitHubUser, GitHubRepo
+
 
 class GitHubUser:
     def __init__(self, username):
@@ -16,8 +18,12 @@ class GitHubUser:
             repos = self.response.json()
 
             # Define the keys you want to extract
-            keys_to_extract = ["full_name", "created_at",
-                               "pushed_at", "homepage"]
+            keys_to_extract = [
+                "full_name",
+                "created_at",
+                "pushed_at",
+                "homepage",
+            ]
 
             # Initialize a 2D array to store the extracted data
             list_results = []
@@ -73,8 +79,10 @@ def rockpaperscissors():
         output = "You Lose!"
 
     return render_template(
-        "rockpaperscissors.html", input=input,
-        bot_input=bot_input, result=output
+        "rockpaperscissors.html",
+        input=input,
+        bot_input=bot_input,
+        result=output,
     )
 
 
@@ -169,5 +177,6 @@ def get_username():
     input_username = request.form.get("username")
     user = GitHubUser(input_username)
     repo_list = user.getRepoLists()
-    return render_template("greet.html",
-                           username=input_username, repos_info=repo_list)
+    return render_template(
+        "greet.html", username=input_username, repos_info=repo_list
+    )
