@@ -1,6 +1,6 @@
 {
     "functions": {
-        "/api/app": {
+        "api/app.py": {
             "includeFiles": "api/githubapi.py"
         }
     },
