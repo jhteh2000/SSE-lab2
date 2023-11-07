@@ -14,7 +14,8 @@ class GitHubUser:
             repos = self.response.json()
 
             # Define the keys you want to extract
-            keys_to_extract = ["full_name", "created_at", "pushed_at", "homepage"]
+            keys_to_extract = ["full_name", "created_at",
+                               "pushed_at", "homepage"]
 
             # Initialize a 2D array to store the extracted data
             list_results = []

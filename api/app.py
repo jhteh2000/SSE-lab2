@@ -33,7 +33,8 @@ def rockpaperscissors():
         output = "You Lose!"
 
     return render_template(
-        "rockpaperscissors.html", input=input, bot_input=bot_input, result=output
+        "rockpaperscissors.html", input=input,
+        bot_input=bot_input, result=output
     )
 
 
@@ -128,4 +129,5 @@ def get_username():
     input_username = request.form.get("username")
     user = GitHubUser(input_username)
     repo_list = user.getRepoLists()
-    return render_template("greet.html", username=input_username, repos_info=repo_list)
+    return render_template("greet.html",
+                           username=input_username, repos_info=repo_list)
