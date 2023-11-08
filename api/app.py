@@ -1,6 +1,6 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 import random
-from functions.githubapi import GitHubUser, GitHubRepo
+from functions.githubapi import GitHubUser, GitHubUserRepo, GitHubRepo
 
 
 app = Flask(__name__)
@@ -122,21 +122,33 @@ def query():
     return process_query(q)
 
 
-@app.route("/githubform")
+@app.route("/github/form")
 def github_form():
     return render_template("githubform.html")
 
 
-@app.route("/github_api", methods=["POST"])
-def get_username():
+@app.route("/github/form/submit", methods=["POST"])
+def github_form_submit():
     input_username = request.form.get("username")
-    user = GitHubUser(input_username)
-    repo_list = user.getRepoLists()
+    return redirect(url_for("github_user", username=input_username))
+
+
+@app.route("/github/<username>")
+def github_user(username):
+    user = GitHubUser(username)
+    followers_count = user.getFollowersCount()
+    following_count = user.getFollowingCount()
+    userRepo = GitHubUserRepo(username)
+    repo_list = userRepo.getRepoLists()
     # The commits_list will contains a 2D list of each repo
     commits_list = []
-    for reponame in user.getRepoName:
+    for reponame in userRepo.getRepoName():
         repo = GitHubRepo(reponame)
-        commits_list.append(repo.getRepoCommitsLists)
+        commits_list.append(repo.getRepoCommitsLists())
     return render_template(
-        "greet.html", username=input_username, repos_info=repo_list
+        "greet.html",
+        username=username,
+        followers=followers_count,
+        following=following_count,
+        repos_info=repo_list,
     )

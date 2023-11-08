@@ -1,30 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Hello {{username}}</h1>
 
-    <h2>Repo table:</h2>
-    <div style="overflow-x:auto;">
-      <table border="1">
-        <tr>
-          <th style="padding: 8px;">Repo Name</th>
-          <th style="padding: 8px;">Created At</th>
-          <th style="padding: 8px;">Pushed At</th>
-          <th style="padding: 8px;">Home Page</th>
-        </tr>
-        {% for row in repos_info %}
-          <tr>
-            {% for col in row %}
-              <td style="padding: 8px;">{{ col }}</td>
-            {% endfor %}
-          </tr>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Hello {{username}}</h1>
+  <div style="overflow-x:auto;">
+    <table border="1">
+      <tr>
+        <th style="padding: 8px;">Username</th>
+        <td style="padding: 8px;">{{ username }}</td>
+      </tr>
+      <tr>
+        <th style="padding: 8px;">Followers</th>
+        <td style="padding: 8px;"><a href="#">{{ followers }}</a></td>
+      </tr>
+      <tr>
+        <th style="padding: 8px;">Following</th>
+        <td style="padding: 8px;"><a href="#">{{ following }}</a></td>
+      </tr>
+    </table>
+  </div>
+  <h2>Repo table:</h2>
+  <div style="overflow-x:auto;">
+    <table border="1">
+      <tr>
+        <th style="padding: 8px;">Repo Name</th>
+        <th style="padding: 8px;">Created At</th>
+        <th style="padding: 8px;">Pushed At</th>
+        <th style="padding: 8px;">Home Page</th>
+      </tr>
+      {% for row in repos_info %}
+      <tr>
+        {% for col in row %}
+        <td style="padding: 8px;">{{ col }}</td>
         {% endfor %}
-      </table>
-    </div>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
 </body>
+
 </html>
