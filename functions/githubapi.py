@@ -2,7 +2,7 @@ import requests
 
 # Authenticate with personal token for higher API rate limit
 headers = {
-    "Authorization": "token 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",
+    "Authorization": "token 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",
 }
 
 
@@ -164,8 +164,10 @@ class GitHubRepo:
 
 
 # Check the rate limit
-rate_limit = requests.get(
+rlim_response = requests.get(
     "https://api.github.com/rate_limit",
     headers=headers,
 )
-print(rate_limit.json()["resources"]["core"])
+if rlim_response.status_code == 200:
+    rate_limit = rlim_response.json()
+    print(rate_limit["resources"]["core"])
