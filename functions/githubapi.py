@@ -97,15 +97,11 @@ class GitHubRepo:
                 commit_message.append(commit["commit"]["message"])
             return commit_message
 
-    # NOT DONE
     def getRepoCommitsLists(self):
         if self.response.status_code == 200:
-            commits = self.response.json()
-            commit_list = []
-            for commit in commits:
-                hash = commit["sha"]
-                author = commit["commit"]["author"]["name"]
-                date = commit["commit"]["author"]["date"]
-                commit_message = commit["commit"]["message"]
-                commit_list.append(zip(hash, author, date, commit_message))
-            return commit_list
+            list_hash = self.getCommitHash()
+            list_author = self.getCommitAuthor()
+            list_date = self.getCommitDate()
+            list_message = self.getCommitMessage()
+            repo_list = zip(list_hash, list_author, list_date, list_message)
+            return repo_list
