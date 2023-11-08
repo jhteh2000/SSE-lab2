@@ -54,7 +54,8 @@ class GitHubUserRepo:
     def __init__(self, username):
         self.username = username
         self.response = requests.get(
-            "https://api.github.com/users/" + self.username + "/repos", headers=headers
+            "https://api.github.com/users/" + self.username + "/repos",
+            headers=headers,
         )
 
     def getRepoName(self):
@@ -99,7 +100,9 @@ class GitHubUserRepo:
             list_created = self.getRepoCreatedDate()
             list_pushed = self.getRepoLastPushed()
             list_homepage = self.getRepoHomepage()
-            repo_list = zip(list_name, list_created, list_pushed, list_homepage)
+            repo_list = zip(
+                list_name, list_created, list_pushed, list_homepage
+            )
             return repo_list
 
 
@@ -107,7 +110,9 @@ class GitHubRepo:
     def __init__(self, repo_full_name):
         self.name = repo_full_name
         self.response = requests.get(
-            "https://api.github.com/repos/" + repo_full_name + "/commits?per_page=5",
+            "https://api.github.com/repos/"
+            + repo_full_name
+            + "/commits?per_page=5",
             headers=headers,
         )
 
