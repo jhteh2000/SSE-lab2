@@ -152,3 +152,27 @@ def github_user(username):
         following=following_count,
         repos_info=repo_list,
     )
+
+
+@app.route("/github/<username>/followers")
+def github_user_followers(username):
+    user = GitHubUser(username)
+    followers, avatar_urls = user.getFollowers()
+    return render_template(
+        "githubfollowers.html",
+        username=username,
+        followers=followers,
+        avatar_urls=avatar_urls,
+    )
+
+
+@app.route("/github/<username>/following")
+def github_user_following(username):
+    user = GitHubUser(username)
+    following, avatar_urls = user.getFollowing()
+    return render_template(
+        "githubfollowing.html",
+        username=username,
+        following=following,
+        avatar_urls=avatar_urls,
+    )

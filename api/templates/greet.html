@@ -17,11 +17,13 @@
       </tr>
       <tr>
         <th style="padding: 8px;">Followers</th>
-        <td style="padding: 8px;"><a href="#">{{ followers }}</a></td>
+        <td style="padding: 8px;"><a href="{{ url_for('github_user_followers', username=username) }}">{{ followers
+            }}</a></td>
       </tr>
       <tr>
         <th style="padding: 8px;">Following</th>
-        <td style="padding: 8px;"><a href="#">{{ following }}</a></td>
+        <td style="padding: 8px;"><a href="{{ url_for('github_user_following', username=username) }}">{{ following
+            }}</a></td>
       </tr>
     </table>
   </div>

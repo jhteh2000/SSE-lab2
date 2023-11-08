@@ -1,6 +1,9 @@
 import requests
 
-headers = {"Authorisation": "token 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"}
+# Authenticate with personal token for higher API rate limit
+headers = {
+    "Authorization": "token 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",
+}
 
 
 class GitHubUser:
@@ -34,7 +37,10 @@ class GitHubUser:
             list_followers = []
             for follower in followers:
                 list_followers.append(follower["login"])
-            return list_followers
+            list_avatar_url = []
+            for follower in followers:
+                list_avatar_url.append(follower["avatar_url"])
+            return list_followers, list_avatar_url
 
     def getFollowing(self):
         self.response = requests.get(
@@ -47,7 +53,10 @@ class GitHubUser:
             list_following = []
             for follow in following:
                 list_following.append(follow["login"])
-            return list_following
+            list_avatar_url = []
+            for follow in following:
+                list_avatar_url.append(follow["avatar_url"])
+            return list_following, list_avatar_url
 
 
 class GitHubUserRepo:
@@ -100,9 +109,7 @@ class GitHubUserRepo:
             list_created = self.getRepoCreatedDate()
             list_pushed = self.getRepoLastPushed()
             list_homepage = self.getRepoHomepage()
-            repo_list = zip(
-                list_name, list_created, list_pushed, list_homepage
-            )
+            repo_list = zip(list_name, list_created, list_pushed, list_homepage)
             return repo_list
 
 
@@ -110,9 +117,7 @@ class GitHubRepo:
     def __init__(self, repo_full_name):
         self.name = repo_full_name
         self.response = requests.get(
-            "https://api.github.com/repos/"
-            + repo_full_name
-            + "/commits?per_page=5",
+            "https://api.github.com/repos/" + repo_full_name + "/commits?per_page=5",
             headers=headers,
         )
 
@@ -156,3 +161,11 @@ class GitHubRepo:
             list_message = self.getCommitMessage()
             repo_list = zip(list_hash, list_author, list_date, list_message)
             return repo_list
+
+
+# Check the rate limit
+rate_limit = requests.get(
+    "https://api.github.com/rate_limit",
+    headers=headers,
+)
+print(rate_limit.json()["resources"]["core"])
