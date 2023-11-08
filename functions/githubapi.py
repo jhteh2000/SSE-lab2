@@ -2,7 +2,7 @@ import requests
 
 # Authenticate with personal token for higher API rate limit
 headers = {
-    "Authorization": "token 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",
+    "Authorization": "token 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",
 }
 
 
