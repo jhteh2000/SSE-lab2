@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 import random
-from functions.githubapi import GitHubUser
+from functions.githubapi import GitHubUser, GitHubRepo
 
 
 app = Flask(__name__)
@@ -132,6 +132,11 @@ def get_username():
     input_username = request.form.get("username")
     user = GitHubUser(input_username)
     repo_list = user.getRepoLists()
+    # The commits_list will contains a 2D list of each repo
+    commits_list = []
+    for reponame in user.getRepoName:
+        repo = GitHubRepo(reponame)
+        commits_list.append(repo.getRepoCommitsLists)
     return render_template(
         "greet.html", username=input_username, repos_info=repo_list
     )
