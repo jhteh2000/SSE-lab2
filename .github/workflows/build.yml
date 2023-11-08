@@ -28,6 +28,8 @@ jobs:
       - name: Install dependencies in requirements.txt 
         run: pip install -r requirements.txt
       - name: Run pytest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: pytest api/*.py
       - name: Install Pytest GitHub Report
         run: pip install pytest-github-report
@@ -35,6 +37,7 @@ jobs:
         env:
           pytest_github_report: true
           pytest_verbosity: 2
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: pytest api/*.py
 
   deploy-to-vercel:
