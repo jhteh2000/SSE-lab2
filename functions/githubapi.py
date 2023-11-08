@@ -1,11 +1,60 @@
 import requests
 
+headers = {"Authorisation": "token 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"}
+
 
 class GitHubUser:
     def __init__(self, username):
         self.username = username
         self.response = requests.get(
-            "https://api.github.com/users/" + username + "/repos"
+            "https://api.github.com/users/" + self.username,
+            headers=headers,
+        )
+
+    def getFollowersCount(self):
+        if self.response.status_code == 200:
+            user = self.response.json()
+            followers_count = user["followers"]
+            return followers_count
+
+    def getFollowingCount(self):
+        if self.response.status_code == 200:
+            user = self.response.json()
+            following_count = user["following"]
+            return following_count
+
+    def getFollowers(self):
+        self.response = requests.get(
+            "https://api.github.com/users/" + self.username + "/followers",
+            headers=headers,
+        )
+        if self.response.status_code == 200:
+            followers = self.response.json()
+            # data returned is a list of ‘repository’ entities
+            list_followers = []
+            for follower in followers:
+                list_followers.append(follower["login"])
+            return list_followers
+
+    def getFollowing(self):
+        self.response = requests.get(
+            "https://api.github.com/users/" + self.username + "/following",
+            headers=headers,
+        )
+        if self.response.status_code == 200:
+            following = self.response.json()
+            # data returned is a list of ‘repository’ entities
+            list_following = []
+            for follow in following:
+                list_following.append(follow["login"])
+            return list_following
+
+
+class GitHubUserRepo:
+    def __init__(self, username):
+        self.username = username
+        self.response = requests.get(
+            "https://api.github.com/users/" + self.username + "/repos", headers=headers
         )
 
     def getRepoName(self):
@@ -50,9 +99,7 @@ class GitHubUser:
             list_created = self.getRepoCreatedDate()
             list_pushed = self.getRepoLastPushed()
             list_homepage = self.getRepoHomepage()
-            repo_list = zip(
-                list_name, list_created, list_pushed, list_homepage
-            )
+            repo_list = zip(list_name, list_created, list_pushed, list_homepage)
             return repo_list
 
 
@@ -60,9 +107,8 @@ class GitHubRepo:
     def __init__(self, repo_full_name):
         self.name = repo_full_name
         self.response = requests.get(
-            "https://api.github.com/repos/"
-            + repo_full_name
-            + "/commits?per_page=5"
+            "https://api.github.com/repos/" + repo_full_name + "/commits?per_page=5",
+            headers=headers,
         )
 
     def getCommitHash(self):
