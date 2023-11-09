@@ -32,7 +32,7 @@
     {% for i in range(repos|count) %}
     <table border="1" style="width: 1080px;">
       <tr>
-        <th style="padding: 8px; width: 20%;">Repo Name</th>
+        <th style="padding: 8px;">Repo Name</th>
         <td style="padding: 8px;" colspan="3">{{ repos[i][0] }}</td>
       </tr>
       <tr>
@@ -48,7 +48,7 @@
         <td style="padding: 8px;" colspan="3">{{ repos[i][3] }}</td>
       </tr>
       <tr>
-        <th style="padding: 8px;">Hash</th>
+        <th style="padding: 8px; width: 20%;">Hash</th>
         <th style="padding: 8px; width: 20%;">Author</th>
         <th style="padding: 8px; width: 20%;">Date</th>
         <th style="padding: 8px; width: 40%;">Message</th>
