@@ -10,9 +10,9 @@
 <body>
   <h1>Hello {{username}}</h1>
   <div style="overflow-x:auto;">
-    <table border="1" style="width: 800px;">
+    <table border="1" style="width: 1080px;">
       <tr>
-        <th style="padding: 8px; width: 200px;">Username</th>
+        <th style="padding: 8px; width: 25%;">Username</th>
         <td style="padding: 8px;">{{ username }}</td>
       </tr>
       <tr>
@@ -30,9 +30,9 @@
   <h2>Repo table:</h2>
   <div style="overflow-x:auto;">
     {% for i in range(repos|count) %}
-    <table border="1" style="width: 800px;">
+    <table border="1" style="width: 1080px;">
       <tr>
-        <th style="padding: 8px;">Repo Name</th>
+        <th style="padding: 8px; width: 20%;">Repo Name</th>
         <td style="padding: 8px;" colspan="3">{{ repos[i][0] }}</td>
       </tr>
       <tr>
@@ -49,9 +49,9 @@
       </tr>
       <tr>
         <th style="padding: 8px;">Hash</th>
-        <th style="padding: 8px;">Author</th>
-        <th style="padding: 8px;">Date</th>
-        <th style="padding: 8px;">Message</th>
+        <th style="padding: 8px; width: 20%;">Author</th>
+        <th style="padding: 8px; width: 20%;">Date</th>
+        <th style="padding: 8px; width: 40%;">Message</th>
       </tr>
       {% for commit in commits[i] %}
       <tr>
