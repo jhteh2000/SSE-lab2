@@ -150,7 +150,8 @@ def github_user(username):
         username=username,
         followers=followers_count,
         following=following_count,
-        repos_info=repo_list,
+        repos=repo_list,
+        commits=commits_list,
     )
 
 

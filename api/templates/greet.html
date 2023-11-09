@@ -10,9 +10,9 @@
 <body>
   <h1>Hello {{username}}</h1>
   <div style="overflow-x:auto;">
-    <table border="1">
+    <table border="1" style="width: 800px;">
       <tr>
-        <th style="padding: 8px;">Username</th>
+        <th style="padding: 8px; width: 200px;">Username</th>
         <td style="padding: 8px;">{{ username }}</td>
       </tr>
       <tr>
@@ -29,21 +29,41 @@
   </div>
   <h2>Repo table:</h2>
   <div style="overflow-x:auto;">
-    <table border="1">
+    {% for i in range(repos|count) %}
+    <table border="1" style="width: 800px;">
       <tr>
         <th style="padding: 8px;">Repo Name</th>
-        <th style="padding: 8px;">Created At</th>
-        <th style="padding: 8px;">Pushed At</th>
-        <th style="padding: 8px;">Home Page</th>
+        <td style="padding: 8px;" colspan="3">{{ repos[i][0] }}</td>
       </tr>
-      {% for row in repos_info %}
       <tr>
-        {% for col in row %}
-        <td style="padding: 8px;">{{ col }}</td>
-        {% endfor %}
+        <th style="padding: 8px;">Created At</th>
+        <td style="padding: 8px;" colspan="3">{{ repos[i][1] }}</td>
+      </tr>
+      <tr>
+        <th style="padding: 8px;">Pushed At</th>
+        <td style="padding: 8px;" colspan="3">{{ repos[i][2] }}</td>
+      </tr>
+      <tr>
+        <th style="padding: 8px;">Home Page</th>
+        <td style="padding: 8px;" colspan="3">{{ repos[i][3] }}</td>
+      </tr>
+      <tr>
+        <th style="padding: 8px;">Hash</th>
+        <th style="padding: 8px;">Author</th>
+        <th style="padding: 8px;">Date</th>
+        <th style="padding: 8px;">Message</th>
+      </tr>
+      {% for commit in commits[i] %}
+      <tr>
+        <td style="padding: 8px;">{{ commit[0] }}</td>
+        <td style="padding: 8px;">{{ commit[1] }}</td>
+        <td style="padding: 8px;">{{ commit[2] }}</td>
+        <td style="padding: 8px;">{{ commit[3] }}</td>
       </tr>
       {% endfor %}
     </table>
+    <br><br><br>
+    {% endfor %}
   </div>
 </body>
 

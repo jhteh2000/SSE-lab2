@@ -111,7 +111,7 @@ class GitHubUserRepo:
             list_created = self.getRepoCreatedDate()
             list_pushed = self.getRepoLastPushed()
             list_homepage = self.getRepoHomepage()
-            repo_list = zip(list_name, list_created, list_pushed, list_homepage)
+            repo_list = list(zip(list_name, list_created, list_pushed, list_homepage))
             return repo_list
 
 
@@ -161,7 +161,7 @@ class GitHubRepo:
             list_author = self.getCommitAuthor()
             list_date = self.getCommitDate()
             list_message = self.getCommitMessage()
-            repo_list = zip(list_hash, list_author, list_date, list_message)
+            repo_list = list(zip(list_hash, list_author, list_date, list_message))
             return repo_list
 
 
